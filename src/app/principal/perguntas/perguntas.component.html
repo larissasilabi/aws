@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col s12 m5">
     <div class="card-panel orange accent-2">
-      <span class="white-text text-darken-2"><h5>1) O que é o serviço AWS da Amazon?</h5></span>
+      <span class="white-text text-darken-2"><h5>{{ perguntas }}</h5></span>
       <h5></h5>
     </div>
   </div>
@@ -9,7 +9,8 @@
 
 <div class="row">
   <div class="col s12 m5">
-    <form action="#">
+    <div class="card-panel">
+      <form action="#">
         <p>
           <input class="with-gap indigo darken-4" name="group1" type="radio" id="test1" />
           <label for="test1">Red</label>
@@ -27,6 +28,7 @@
           <label for="test4">Brown</label>
         </p>
       </form>
+      <br>
+      <a class="waves-effect waves-light btn light-blue darken-4" (click)="proximaPergunta()">OK</a>
+    </div>
   </div>
-</div>
-  
