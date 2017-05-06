@@ -1,6 +1,11 @@
-import { routing } from './../../app.routing';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
+
+
+import { routing } from './../../app.routing';
+import { PerguntasService } from './perguntas.service';
+import { Pergunta } from './pergunta';
 
 @Component({
   selector: 'app-perguntas',
@@ -9,30 +14,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerguntasComponent implements OnInit {
 
-  id: number = 1;
-
-  perguntas: string[];
+  id: number;
+  perguntas: any[] = [];
+  pergunta: Pergunta;
+  inscricao: Subscription;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute, 
+    private perguntasService: PerguntasService
   ) { }
 
   ngOnInit() {
-
-    this.perguntas[0] = "O que é o serviço de AWS da Amazon?1";
-    this.perguntas[1] = "O que é o serviço de AWS da Amazon?2";
-    this.perguntas[2] = "O que é o serviço de AWS da Amazon?3";
-    this.perguntas[3] = "O que é o serviço de AWS da Amazon?4";
-    this.perguntas[4] = "O que é o serviço de AWS da Amazon?5";
-    this.perguntas[5] = "O que é o serviço de AWS da Amazon?6";
-
-    //this.id = this.route.params['id'];
-    console.log(this.route.params['id']);
+    this.inscricao = this.route.params.subscribe(
+      (params: any) => {
+        this.id = this.route.snapshot.params['id'];
+        this.pergunta = this.perguntasService.getPergunta(this.route.snapshot.params['id']);
+      }
+    );
   }
 
   proximaPergunta() {
-    this.router.navigate(['/perguntas'], [this.id + 1]);
+    this.id++;
+    console.log(this.id);
+    if (this.id < 7){
+      this.router.navigate(['/perguntas', this.id]);    
+    }
+    else {
+      this.router.navigate(['/resultado']);   
+    }
+
   }
 
 }

@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  nome: string;
+  
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -15,5 +17,9 @@ export class LoginComponent implements OnInit {
 
   comecar() {
     this.router.navigate(['/perguntas/1']);
+  }
+
+  onSubmit(form){
+    console.log(form);
   }
 }

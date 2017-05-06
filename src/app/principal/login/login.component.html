@@ -1,8 +1,21 @@
-      <div class="row">
+<!--<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="row">        
         <div class="input-field col s12 center-align">
-          <input id="nome" type="text" class="validate">
+          <input id="nome" type="text" class="form-control" name="nome" required ngModel>
           <label for="nome">Digite seu nome</label>
 
-          <a class="waves-effect waves-light btn light-blue darken-4" (click)="comecar()">Começar!</a>
+          <button type="submit" class="waves-effect waves-light btn light-blue darken-4" (click)="comecar()">Começar!</button>
         </div>
       </div>
+</form>-->
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="row">
+    <div class="input-field col s12 center-align">
+          <input id="nome" type="text" class="form-control" name="nome" required ngModel>
+          <label for="nome">Digite seu nome</label>
+          <button type="submit" class="waves-effect waves-light btn light-blue darken-4"
+            [disabled]="!f.valid" (click)="comecar()">Começar!</button>
+    </div>
+  </div>
+</form>
