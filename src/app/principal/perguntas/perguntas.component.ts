@@ -7,6 +7,13 @@ import { routing } from './../../app.routing';
 import { PerguntasService } from './perguntas.service';
 import { Pergunta } from './pergunta';
 
+// import entire SDK
+import AWS = require('aws-sdk');
+// import AWS object without services
+import AWS = require('aws-sdk/global');
+// import individual service
+import S3 = require('aws-sdk/clients/s3');
+
 @Component({
   selector: 'app-perguntas',
   templateUrl: './perguntas.component.html',
