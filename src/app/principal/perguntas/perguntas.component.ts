@@ -1,18 +1,11 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Rx';
-
+import { } from '/aws-sdk';
 
 import { routing } from './../../app.routing';
 import { PerguntasService } from './perguntas.service';
 import { Pergunta } from './pergunta';
-
-// import entire SDK
-import AWS = require('aws-sdk');
-// import AWS object without services
-import AWS = require('aws-sdk/global');
-// import individual service
-import S3 = require('aws-sdk/clients/s3');
 
 @Component({
   selector: 'app-perguntas',
@@ -28,7 +21,7 @@ export class PerguntasComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private perguntasService: PerguntasService
   ) { }
 
@@ -44,13 +37,53 @@ export class PerguntasComponent implements OnInit {
   proximaPergunta() {
     this.id++;
     console.log(this.id);
-    if (this.id < 7){
-      this.router.navigate(['/perguntas', this.id]);    
+    if (this.id < 7) {
+      this.router.navigate(['/perguntas', this.id]);
     }
     else {
-      this.router.navigate(['/resultado']);   
+      this.router.navigate(['/resultado']);
     }
-
   }
+
+  teste() {
+    var $credentials = {
+      "accessKeyId": "AKIAITVF5OWLUUUAAOYA",
+      "secretAccessKey": "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",
+      "region": "ap-southeast-2"
+    }
+    var AWS = require('aws-sdk');
+    var $db = new AWS.DynamoDB();
+    var DynamoDB = require('@awspilot/dynamodb')($db);
+
+    DynamoDB
+      .table('users')
+      .insert({
+        id: 'teste',
+        acertos: 1,
+      }, function (err, data) {
+        console.log(err, data)
+      })
+
+    // var AWS = require('aws-sdk');
+    // var s3 = new AWS.S3();
+    // // Os nomes do bucket devem ser exclusivos em todos os usuários do S3
+    // var myBucket = 'my.unique.bucket.name';
+    // var myKey = 'myBucketKey';
+    // s3.createBucket({ Bucket: myBucket }, function (err, data) {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     params = { Bucket: myBucket, Key: myKey, Body: 'Hello!' };
+    //     s3.putObject(params, function (err, data) {
+    //       if (err) {
+    //         console.log(err)
+    //       } else {
+    //         console.log("Dados enviados com sucesso para myBucket/myKey");
+    //       }
+    //     });
+    //   }
+    // });
+  }
+
 
 }
