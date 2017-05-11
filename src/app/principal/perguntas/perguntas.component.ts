@@ -87,7 +87,7 @@ export class PerguntasComponent implements OnInit {
         else     console.log(data);           // successful response
         });
 // s3.createBucket({Bucket: bucketName}, function() {
-//   var params = {Bucket: bucketName, Key: keyName, Body: 'Hello World!'};
+//   var params = {Bucket: bnpucketName, Key: keyName, Body: 'Hello World!'};
 //   s3.geputObject(params, function(err, data) {
 //     if (err)
 //       console.log(err)

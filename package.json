@@ -26,6 +26,7 @@
     "core-js": "^2.4.1",
     "dynamodb": "^1.0.0",
     "dynamodb-doc": "^1.0.0",
+    "gulp-s3": "^0.11.0",
     "hammerjs": "^2.0.8",
     "jquery": "^2.2.4",
     "materialize-css": "^0.98.2",
