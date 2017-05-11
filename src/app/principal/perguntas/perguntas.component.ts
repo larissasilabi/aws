@@ -68,51 +68,34 @@ export class PerguntasComponent implements OnInit {
     AWS.config = new AWS.Config();
     AWS.config.accessKeyId = "AKIAITVF5OWLUUUAAOYA";
     AWS.config.secretAccessKey = "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";
-    AWS.config.region = "sa-east-1";
+    AWS.config.region = "us-east-1d";
+    AWS.config.apiVersions = {dynamodb: '2012-08-10'};
+        
+    var dynamodb = new AWS.DynamoDB();
+
+    // Create an S3 client
     var s3 = new AWS.S3();
-    // Os nomes do bucket devem ser exclusivos em todos os usuários do S3
-    var myBucket = '953382053291';
-    var myKey = 'myBucketKey';
-    var params = {
-      Key: { HashKeyElement: {}},
-      TableName: 'users'
-    };
 
-    s3.createBucket({ Bucket: myBucket }, function (err, data) {
-      if (err) {
-        console.log(err);
-      } else {
-        s3.putObject(params, function (err, data) {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log("Dados enviados com sucesso para myBucket/myKey");
-          }
+    // Create a bucket and upload something into it
+    var bucketName = 'usjt';
+    var keyName = 'hello_world.txt';
+    var params = { RequestItems: {}}
+
+    
+    dynamodb.batchGetItem(params, function (err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else     console.log(data);           // successful response
         });
-      }
-    });
+// s3.createBucket({Bucket: bucketName}, function() {
+//   var params = {Bucket: bucketName, Key: keyName, Body: 'Hello World!'};
+//   s3.geputObject(params, function(err, data) {
+//     if (err)
+//       console.log(err)
+//     else
+//       console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
+//   });
+// });
 
-
-    // var AWS = require("aws-sdk");
-
-    // AWS.config = new AWS.Config();
-    // AWS.config.accessKeyId = "AKIAITVF5OWLUUUAAOYA";
-    // AWS.config.secretAccessKey = "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";
-    // AWS.config.region = "sa-east-1";
-
-    // var dynamodb = new AWS.DynamoDB({ apiVersion: '2011-12-05' });
-    // var docClient = new AWS.DynamoDB.DocumentClient();
-
-    // console.log("Querying for users.");
-
-    // var params = {
-    //   Key: { HashKeyElement: {}},
-    //   TableName: 'users'
-    // };
-    // dynamodb.getItem(params, function (err, data) {
-    //   if (err) console.log(err, err.stack); // an error occurred
-    //   else console.log(data);           // successful response
-    // });
 
   }
 
