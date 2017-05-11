@@ -1,5 +1,5 @@
 <!--<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <div class="row">        
+  <div class="row">
         <div class="input-field col s12 center-align">
           <input id="nome" type="text" class="form-control" name="nome" required ngModel>
           <label for="nome">Digite seu nome</label>
@@ -11,6 +11,7 @@
 
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
   <div class="row">
+    <img class="responsive-img" [src]="fullPath">
     <div class="input-field col s12 center-align">
           <input id="nome" type="text" class="form-control" name="nome" required ngModel>
           <label for="nome">Digite seu nome</label>

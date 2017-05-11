@@ -1,10 +1,8 @@
 <div class="row">
     <div class="col s12 m5">
         <div class="card-panel grey lighten-5 center-align">
-           <i *ngIf="nivel == 3" class="large material-icons green-text">thumb_up</i>
-           <i *ngIf="nivel == 2"class="large material-icons yellow-text">thumbs_up_down</i>
-           <i *ngIf="nivel == 1" class="large material-icons red-text">thumb_down</i>
-            <h5>{{ mensagem }}</h5>            
+           <img class="responsive-img" [src]="fullPath">
+            <h5 style="font-size:40px; color:black">{{ mensagem }}</h5>
         </div>
     </div>
 </div>

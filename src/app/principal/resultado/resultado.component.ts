@@ -8,18 +8,28 @@ import { Component, OnInit } from '@angular/core';
 export class ResultadoComponent implements OnInit {
 
   mensagem: string;
+  fullPath: string;
 
-  nivel: number = 1;
+  nivel: number = 2;
 
   constructor() { }
 
   ngOnInit() {
-    // pegar o nivel 
+    // pegar o nivel
     // setar a mensagem
     switch(this.nivel){
-      case 1:this.mensagem = "Parabéns!";
-      case 2:this.mensagem = "Precisa melhorar...";
-      case 3:this.mensagem = "Que feio."
+      case 1:
+        this.mensagem = "Parabéns!";
+        this.fullPath = "/assets/images/happy.jpg";
+        break;
+      case 2:
+        this.mensagem = "Precisa melhorar...";
+        this.fullPath = "/assets/images/normal.png";
+        break;
+      case 3:
+      this.mensagem = "Que feio."
+      this.fullPath = "/assets/images/sad.png";
+      break;
     }
   }
 

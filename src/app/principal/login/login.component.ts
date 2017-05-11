@@ -9,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   nome: string;
-  
+  fullPath: string;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.fullPath = "/assets/images/quiz.jpg";
   }
 
   comecar() {
