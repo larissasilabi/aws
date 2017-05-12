@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   comecar() {
+    localStorage.setItem('nome', this.nome);
     this.router.navigate(['/perguntas/1']);
   }
 

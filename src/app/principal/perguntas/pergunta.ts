@@ -6,6 +6,7 @@ export class Pergunta {
         public a: string,
         public b: string,
         public c: string,
-        public d: string
+        public d: string,
+        public correta: string
     ){}
 }

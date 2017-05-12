@@ -13,7 +13,7 @@
   <div class="row">
     <img class="responsive-img" [src]="fullPath">
     <div class="input-field col s12 center-align">
-          <input id="nome" type="text" class="form-control" name="nome" required ngModel>
+          <input id="nome" type="text" class="form-control" name="nome" required ngModel [(ngModel)]="nome">
           <label for="nome">Digite seu nome</label>
           <button type="submit" class="waves-effect waves-light btn light-blue darken-4"
             [disabled]="!f.valid" (click)="comecar()">Começar!</button>

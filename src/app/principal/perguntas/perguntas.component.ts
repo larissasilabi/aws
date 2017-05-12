@@ -15,6 +15,8 @@ import { Pergunta } from './pergunta';
 export class PerguntasComponent implements OnInit {
 
   id: number;
+  resposta: string;
+  acertos = 0;
   perguntas: any[] = [];
   pergunta: Pergunta;
   inscricao: Subscription;
@@ -36,12 +38,16 @@ export class PerguntasComponent implements OnInit {
 
   proximaPergunta() {
     this.id++;
-    console.log(this.id);
+    if (this.resposta === this.pergunta.correta) {
+        this.acertos++;
+    }
     if (this.id < 7) {
+      this.resposta = '';
       this.router.navigate(['/perguntas', this.id]);
     }
     else {
-      this.router.navigate(['/resultado']);
+      localStorage.setItem('acertos', this.acertos.toString());
+      this.router.navigate(['/resultado']);      
     }
   }
 
@@ -69,8 +75,8 @@ export class PerguntasComponent implements OnInit {
     AWS.config.accessKeyId = "AKIAITVF5OWLUUUAAOYA";
     AWS.config.secretAccessKey = "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";
     AWS.config.region = "us-east-1d";
-    AWS.config.apiVersions = {dynamodb: '2012-08-10'};
-        
+    AWS.config.apiVersions = { dynamodb: '2012-08-10' };
+
     var dynamodb = new AWS.DynamoDB();
 
     // Create an S3 client
@@ -79,22 +85,22 @@ export class PerguntasComponent implements OnInit {
     // Create a bucket and upload something into it
     var bucketName = 'usjt';
     var keyName = 'hello_world.txt';
-    var params = { RequestItems: {}}
+    var params = { RequestItems: {} }
 
-    
+
     dynamodb.batchGetItem(params, function (err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else     console.log(data);           // successful response
-        });
-// s3.createBucket({Bucket: bucketName}, function() {
-//   var params = {Bucket: bnpucketName, Key: keyName, Body: 'Hello World!'};
-//   s3.geputObject(params, function(err, data) {
-//     if (err)
-//       console.log(err)
-//     else
-//       console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
-//   });
-// });
+      if (err) console.log(err, err.stack); // an error occurred
+      else console.log(data);           // successful response
+    });
+    // s3.createBucket({Bucket: bucketName}, function() {
+    //   var params = {Bucket: bnpucketName, Key: keyName, Body: 'Hello World!'};
+    //   s3.geputObject(params, function(err, data) {
+    //     if (err)
+    //       console.log(err)
+    //     else
+    //       console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
+    //   });
+    // });
 
 
   }

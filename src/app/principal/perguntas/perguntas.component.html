@@ -12,19 +12,19 @@
     <div class="card-panel">
       <form action="#">
         <p>
-          <input class="with-gap" style="color: indigo darken-4" name="group1" type="radio" id="test1" />
+          <input class="with-gap" style="color: indigo darken-4" name="group1" type="radio" id="test1" [(ngModel)]="resposta" value="a"/>
           <label for="test1">{{ pergunta.a }}</label>
         </p>
         <p>
-          <input class="with-gap" name="group1" type="radio" id="test2" />
+          <input class="with-gap" name="group1" type="radio" id="test2" [(ngModel)]="resposta" value="b"/>
           <label for="test2">{{ pergunta.b }}</label>
         </p>
         <p>
-          <input class="with-gap" name="group1" type="radio" id="test3" />
+          <input class="with-gap" name="group1" type="radio" id="test3" [(ngModel)]="resposta" value="c"/>
           <label for="test3">{{ pergunta.c }}</label>
         </p>
         <p>
-          <input class="with-gap" name="group1" type="radio" id="test4" />
+          <input class="with-gap" name="group1" type="radio" id="test4" [(ngModel)]="resposta" value="d"/>
           <label for="test4">{{ pergunta.d }}</label>
         </p>
       </form>
