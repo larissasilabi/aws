@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.fullPath = "/assets/images/amazonlogo.png";
+    this.fullPath = "/assets/images/teste.png";
   }
 
   iniciar() {
